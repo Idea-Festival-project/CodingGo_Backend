@@ -25,12 +25,19 @@ repositories {
 }
 
 dependencies {
+	/* ====== Spring Boot Starter ====== */
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+
+	/* ====== Lombok ====== */
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	/* ====== Database ====== */
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	/* ====== Test Dependencies ====== */
 	testImplementation 'org.springframework.boot:spring-boot-starter-data-redis-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
