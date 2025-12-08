@@ -42,7 +42,7 @@ public class GetCommunityMapper {
         List<CommunityInfo> posts = page.getContent().stream()
                 .map(c -> new CommunityInfo(
                         c.getPostId(),
-                        c.getCategory().name(),
+                        c.getCategory().
                         c.getContent(),
                         new AuthorInfo(c.getUserId(), c.getUsername(), c.getProfileImage()),
                         c.getCommentCount(),
