@@ -12,6 +12,7 @@ import Coding_GO.codingGO.domain.community.service.UpdateCommunityService;
 import Coding_GO.codingGO.global.exception.ErrorCode;
 import Coding_GO.codingGO.global.exception.GlobalException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,13 +26,14 @@ public class UpdateCommunityServiceImpl implements UpdateCommunityService {
 
     @Override
     @Transactional
+    @CacheEvict(value = "communityList", allEntries = true)
     public CreateCommunityResponse execute(Long postId, UpdateCommunityRequest request, Long user_id) {
 
         CommunityEntity community = communityRepository.findById(postId)
                 .orElseThrow(() -> new GlobalException(ErrorCode.COMMUNITY_NOT_FOUND_EXCEPTION));
 
         if (!community.getAuthor().getUserId().equals(user_id)) {
-            throw new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION);
+            throw new GlobalException(ErrorCode.USER_NOT_AUTHORIZED);
         }
 
         community.setContent(request.content());
