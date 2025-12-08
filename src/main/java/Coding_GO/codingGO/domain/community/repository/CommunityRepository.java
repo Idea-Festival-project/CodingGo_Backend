@@ -23,7 +23,7 @@ public interface CommunityRepository extends JpaRepository<CommunityEntity, Long
     )
     Page<CommunityEntity> findAllCommunity(Pageable pageable);
 
-    @Query("SELECT c.postId, COUNT(cm) FROM CommunityEntity c " +
+    @Query("SELECT c.postId as postId, COUNT(cm) as commentCount FROM CommunityEntity c " +
             "LEFT JOIN c.comments cm " +
             "GROUP BY c.postId")
     List<CommentCount> countCommunityByPost();
