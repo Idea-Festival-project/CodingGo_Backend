@@ -1,7 +1,5 @@
 package Coding_GO.codingGO.domain.community.entity;
 
-import Coding_GO.codingGO.domain.community.data.Community;
-import Coding_GO.codingGO.domain.community.presentation.data.request.CreateCommunityRequest;
 import Coding_GO.codingGO.domain.community.data.constant.CommunityCategory;
 import jakarta.persistence.*;
 import lombok.*;
