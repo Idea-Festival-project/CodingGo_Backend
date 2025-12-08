@@ -40,7 +40,7 @@ public class CommunityController {
                     content = @Content(mediaType = "application/json")
             ),
             @ApiResponse(
-                    responseCode = "405",
+                    responseCode = "400",
                     description = "커뮤니티 글 작성에 실패",
                     content = @Content
             ),
