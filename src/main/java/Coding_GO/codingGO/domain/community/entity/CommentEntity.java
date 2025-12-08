@@ -1,6 +1,5 @@
 package Coding_GO.codingGO.domain.community.entity;
 
-import Coding_GO.codingGO.domain.community.data.Community;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
