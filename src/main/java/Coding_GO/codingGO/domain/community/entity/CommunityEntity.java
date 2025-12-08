@@ -37,7 +37,7 @@ public class CommunityEntity {
     private String title;
 
     @Lob
-    @Column(nullable = false, name = "content", length = 200, columnDefinition = "TEXT")
+    @Column(nullable = false, name = "content", columnDefinition = "TEXT")
     private String content;
 
     @CreationTimestamp
