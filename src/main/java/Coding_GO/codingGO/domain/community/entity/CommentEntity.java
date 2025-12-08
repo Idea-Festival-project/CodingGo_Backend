@@ -32,7 +32,7 @@ public class CommentEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_comment_id")
-    private CommentEntity parent_comment;
+    private CommentEntity parentComment;;
 
     @Column(nullable = false, name = "content", length = 255)
     private String content;
