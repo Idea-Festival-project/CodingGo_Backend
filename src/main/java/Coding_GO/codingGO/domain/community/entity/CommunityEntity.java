@@ -44,6 +44,7 @@ public class CommunityEntity {
     @Column(nullable = false, name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
+
     //댓글 리스트 매핑을 위한 것
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<CommentEntity> comments = new ArrayList<>();
