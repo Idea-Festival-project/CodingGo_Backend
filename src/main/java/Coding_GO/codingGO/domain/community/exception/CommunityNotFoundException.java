@@ -5,7 +5,7 @@ public class CommunityNotFoundException extends RuntimeException {
         super(message);
     }
 
-    public CommunityNotFoundException(){
+    public CommunityNotFoundException() {
         super("NOT FOUND COMMUNITY");
     }
 }

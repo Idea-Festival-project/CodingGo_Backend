@@ -28,9 +28,9 @@ public class UpdateCommunityServiceImpl implements UpdateCommunityService {
     public CreateCommunityResponse execute(Long postId, UpdateCommunityRequest request, Long user_id) {
 
         CommunityEntity community = communityRepository.findById(postId)
-                .orElseThrow(()-> new GlobalException(ErrorCode.COMMUNITY_NOT_FOUND_EXCEPTION));
+                .orElseThrow(() -> new GlobalException(ErrorCode.COMMUNITY_NOT_FOUND_EXCEPTION));
 
-        if(!community.getAuthor().getUserId().equals(user_id)) {
+        if (!community.getAuthor().getUserId().equals(user_id)) {
             throw new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION);
         }
 

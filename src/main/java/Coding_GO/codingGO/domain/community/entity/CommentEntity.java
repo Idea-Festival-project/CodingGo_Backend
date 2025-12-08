@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CommentEntity{
+public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,11 +34,11 @@ public class CommentEntity{
     @JoinColumn(name = "parent_comment_id")
     private CommentEntity parent_comment;
 
-    @Column(nullable = false,name = "content" , length = 255)
+    @Column(nullable = false, name = "content", length = 255)
     private String content;
 
     @CreationTimestamp
-    @Column(nullable = false,name = "created_at", updatable = false)
+    @Column(nullable = false, name = "created_at", updatable = false)
     private LocalDateTime create_at;
 
 

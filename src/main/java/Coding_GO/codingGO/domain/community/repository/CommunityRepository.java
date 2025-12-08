@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CommunityRepository extends JpaRepository<CommunityEntity,Long> {
+public interface CommunityRepository extends JpaRepository<CommunityEntity, Long> {
 
     @Query(
             value = "SELECT c FROM CommunityEntity c " +

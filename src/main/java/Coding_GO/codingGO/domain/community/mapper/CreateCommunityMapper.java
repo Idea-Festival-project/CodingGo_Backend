@@ -14,7 +14,7 @@ public class CreateCommunityMapper {
                 : entity.getAuthor().getUsername();
 
         String profileImage = entity.getAuthor().getProfile() != null
-                ?entity.getAuthor().getProfile().getProfileImage()
+                ? entity.getAuthor().getProfile().getProfileImage()
                 : null;
 
         return Community.builder()
@@ -31,7 +31,7 @@ public class CreateCommunityMapper {
                 .build();
     }
 
-    public CommunityEntity createEntity(CommunityCategory category, String content, UserEntity author){
+    public CommunityEntity createEntity(CommunityCategory category, String content, UserEntity author) {
         return CommunityEntity.builder()
                 .author(author)
                 .category(category)

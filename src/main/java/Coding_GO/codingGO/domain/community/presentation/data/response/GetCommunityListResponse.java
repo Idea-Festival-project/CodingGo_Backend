@@ -12,6 +12,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public record GetCommunityListResponse(
-    String status,
-    CommunityData community
-) {}
+        String status,
+        CommunityData community
+) {
+}

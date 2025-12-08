@@ -18,7 +18,7 @@ public class DeleteCommunityServiceImpl implements DeleteCommunityService {
 
     @Override
     public void execute(Long postId) {
-        CommunityEntity community =communityRepository.findById(postId)
+        CommunityEntity community = communityRepository.findById(postId)
                 .orElseThrow(() -> new GlobalException(ErrorCode.COMMUNITY_NOT_FOUND_EXCEPTION));
 
         communityRepository.delete(community);

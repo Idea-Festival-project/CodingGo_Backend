@@ -21,31 +21,30 @@ import java.util.List;
 
 public class CommunityEntity {
     @Id
-    @Column(nullable = false , name = "post_id")
+    @Column(nullable = false, name = "post_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "user_id" , nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private UserEntity author;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "category")
     CommunityCategory category;
 
-    @Column(nullable = true,name = "title", length = 200)
+    @Column(nullable = true, name = "title", length = 200)
     private String title;
 
     @Lob
-    @Column(nullable = false,name = "content", length = 200, columnDefinition = "TEXT")
+    @Column(nullable = false, name = "content", length = 200, columnDefinition = "TEXT")
     private String content;
 
     @CreationTimestamp
-    @Column(nullable = false, name = "created_at",  updatable = false)
+    @Column(nullable = false, name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-
     //댓글 리스트 매핑을 위한 것
-    @OneToMany(mappedBy = "community", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<CommentEntity> comments = new ArrayList<>();
 }

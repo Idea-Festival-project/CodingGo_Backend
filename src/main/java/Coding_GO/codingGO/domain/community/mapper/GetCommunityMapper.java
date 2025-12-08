@@ -20,7 +20,7 @@ public class GetCommunityMapper {
                 : entity.getAuthor().getUsername();
 
         String profileImage = entity.getAuthor().getProfile() != null
-                ?entity.getAuthor().getProfile().getProfileImage()
+                ? entity.getAuthor().getProfile().getProfileImage()
                 : null;
 
         return Community.builder()

@@ -19,10 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-
-@Tag(name = "Community API" , description = "커뮤니티 관련 API")
+@Tag(name = "Community API", description = "커뮤니티 관련 API")
 @RequestMapping("api/CodingGo/community")
 @RestController
 @RequiredArgsConstructor
@@ -61,12 +58,12 @@ public class CommunityController {
     public ResponseEntity<CreateCommunityResponse> createCommunity(
             @RequestBody CreateCommunityRequest request,
             @AuthenticationPrincipal Long userId) {
-        CreateCommunityResponse community = createCommunityService.execute(request,userId);
+        CreateCommunityResponse community = createCommunityService.execute(request, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(community);
     }
 
     @GetMapping
-    @Operation(summary = "커뮤니티 글 전체 조회" , description = "커뮤니티 글 전체를 조회합니다.")
+    @Operation(summary = "커뮤니티 글 전체 조회", description = "커뮤니티 글 전체를 조회합니다.")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -75,16 +72,15 @@ public class CommunityController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description =  "커뮤니티 글 조회 실패",
+                    description = "커뮤니티 글 조회 실패",
                     content = @Content
             ),
     })
     public ResponseEntity<GetCommunityListResponse> findAllCommunity(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int limit,
-            @AuthenticationPrincipal Long userId
+            @RequestParam(defaultValue = "10") int limit
     ) {
-        GetCommunityListResponse community = getCommunityService.execute(page,limit);
+        GetCommunityListResponse community = getCommunityService.execute(page, limit);
         return ResponseEntity.ok(community);
     }
 
@@ -98,12 +94,12 @@ public class CommunityController {
             ),
             @ApiResponse(
                     responseCode = "403",
-                    description =  "권한 없음",
+                    description = "권한 없음",
                     content = @Content
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description =  "커뮤니티 글 조회 실패",
+                    description = "존재하지 않는 글을 조회",
                     content = @Content
             )
     })
@@ -111,8 +107,8 @@ public class CommunityController {
             @PathVariable Long postId,
             @RequestBody UpdateCommunityRequest request,
             @AuthenticationPrincipal Long userId
-    ){
-        CreateCommunityResponse response = updateCommunityService.execute(postId ,request,userId);
+    ) {
+        CreateCommunityResponse response = updateCommunityService.execute(postId, request, userId);
         return ResponseEntity.ok(response);
     }
 
@@ -121,17 +117,17 @@ public class CommunityController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
-                    description =  "커뮤니티 글 삭제 성공",
+                    description = "커뮤니티 글 삭제 성공",
                     content = @Content(mediaType = "application/json")
             ),
             @ApiResponse(
                     responseCode = "403",
-                    description =  "권한 없음",
+                    description = "권한 없음",
                     content = @Content
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description =  "커뮤니티 글 조회 실패",
+                    description = "커뮤니티 글 조회 실패",
                     content = @Content
             )
     })

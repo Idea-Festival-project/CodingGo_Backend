@@ -33,7 +33,7 @@ public class CreateCommunityServiceImpl implements CreateCommunityService {
     )
     public CreateCommunityResponse execute(CreateCommunityRequest request, Long userId) {
         UserEntity user = userRepository.findBy(userId)
-                .orElseThrow(()-> new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION));
+                .orElseThrow(() -> new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION));
 
         CommunityEntity community = mapper.createEntity(
                 request.category(),
