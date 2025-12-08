@@ -135,7 +135,7 @@ public class CommunityController {
                     content = @Content
             )
     })
-    public ResponseEntity<Void> deleteCommunity(@PathVariable("post_id") Long postId) {
+    public ResponseEntity<Void> deleteCommunity(@PathVariable("postId") Long postId) {
         deleteCommunityService.execute(postId);
         return ResponseEntity.noContent().build();
     }
