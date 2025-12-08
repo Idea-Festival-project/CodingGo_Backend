@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Community {
     private Long postId;
-    private UserEntity author;
+    private Long userId;
     private String username;
     private String nickname;
     private String profileImage;
