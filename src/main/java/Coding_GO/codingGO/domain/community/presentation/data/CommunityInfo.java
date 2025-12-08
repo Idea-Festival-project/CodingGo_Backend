@@ -5,10 +5,10 @@ import Coding_GO.codingGO.domain.community.data.constant.CommunityCategory;
 import java.time.LocalDateTime;
 
 public record CommunityInfo(
-        Long post_id,
+        Long postId,
         CommunityCategory category,
         String content,
         AuthorInfo author,
         Integer commentCount,
-        LocalDateTime createAt
+        LocalDateTime createdAt
 ) {}
