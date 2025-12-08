@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class CreateCommunityServiceImpl implements CreateCommunityService {
 
-    private final CommunityRepository CommunityRepository;
+    private final CommunityRepository communityRepository;
     private final UserRepository userRepository;
     private final CreateCommunityMapper mapper;
 
@@ -40,7 +40,7 @@ public class CreateCommunityServiceImpl implements CreateCommunityService {
                 request.content(),
                 user
         );
-        CommunityEntity saved = CommunityRepository.save(community);
+        CommunityEntity saved = communityRepository.save(community);
 
         Community dto = mapper.toDto(saved);
 
