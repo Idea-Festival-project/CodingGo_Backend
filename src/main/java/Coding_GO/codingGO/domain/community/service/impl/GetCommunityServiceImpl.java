@@ -1,10 +1,7 @@
 package Coding_GO.codingGO.domain.community.service.impl;
 
 import Coding_GO.codingGO.domain.community.data.Community;
-import Coding_GO.codingGO.domain.community.entity.CommunityEntity;
-import Coding_GO.codingGO.domain.community.mapper.CreateCommunityMapper;
 import Coding_GO.codingGO.domain.community.mapper.GetCommunityMapper;
-import Coding_GO.codingGO.domain.community.presentation.data.projection.CommentCount;
 import Coding_GO.codingGO.domain.community.presentation.data.response.GetCommunityListResponse;
 import Coding_GO.codingGO.domain.community.repository.CommunityRepository;
 import Coding_GO.codingGO.domain.community.service.GetCommunityService;
@@ -16,45 +13,32 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class GetCommunityServiceImpl implements GetCommunityService {
 
+    private static final int DEFAULT_PAGE = 0;
+    private static final int DEFAULT_PAGE_SIZE = 10;
+
     private final CommunityRepository communityRepository;
     private final GetCommunityMapper mapper;
-
 
     @Override
     @Cacheable(
             value = "communityList",
             key = "'page:' + #page + ':limit:' + #limit"
     )
-    @Transactional(readOnly = true)
+
     public GetCommunityListResponse execute(Integer page, Integer limit) {
+        int pageNumber = (page == null || page < 1) ? DEFAULT_PAGE : page;
+        int pageSize = (limit == null || limit < 1) ? DEFAULT_PAGE_SIZE : limit;
 
-        int pagesu = (page == null || page < 1) ? 0 : page;
-        int limitsu = (limit == null || limit < 1) ? 10 : limit;
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
 
-        Pageable pageable = PageRequest.of(
-                pagesu,
-                limitsu
-        );
-        Page<Community> communityPage =
-                communityRepository.findAllCommunity(pageable)
-                        .map(mapper::toDto);
+        Page<Community> communityPage = communityRepository.findAllCommunityWithCommentCount(pageable);
 
-        Map<Long, Long> commentCount = communityRepository.countCommunityByPost()
-                .stream()
-                .collect(Collectors.toMap(CommentCount::postId, CommentCount::commentCount));
+        return new GetCommunityListResponse(communityPage);
 
-        communityPage.getContent().forEach(c -> {
-            c.setCommentCount(commentCount.getOrDefault(c.getPostId(), 0L).intValue());
-        });
-        return mapper.toCommunityListResponse(communityPage);
     }
 }
