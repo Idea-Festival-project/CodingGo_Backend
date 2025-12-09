@@ -35,3 +35,16 @@ management:
     web:
       exposure:
         include: "*"  # ?? Actuator ????? ??
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+cache:
+  type: jcache
+  jcache:
+    config: classpath:ehcache.xml
+
+    logging:
+      level:
+        org.ehcache: DEBUG
