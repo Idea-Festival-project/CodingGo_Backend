@@ -22,4 +22,21 @@ public class Community {
     private String content;
     private Integer commentCount;
     private LocalDateTime createdAt;
+
+    public Community(Long postId,Long userId,
+                     String username, String nickname,
+                     String profileImage, CommunityCategory category,
+                     String title, String content,
+                     Integer commentCount) {
+        this.postId = postId;
+        this.userId = userId;
+        this.username = username;
+        this.nickname = nickname;
+        this.profileImage = profileImage;
+        this.category = category;
+        this.title = title;
+        this.content = content;
+        this.commentCount = commentCount;
+        this.createdAt = LocalDateTime.now();
+    }
 }
