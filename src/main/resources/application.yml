@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/codinggo?useSSL=false&serverTimezone=Asia/Seoul
     username: root
-    password: whitekid07
+    password: dhfkzmf # whitekid07
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -13,14 +13,21 @@ spring:
       hibernate:
         format_sql: true
 
-  redis:
-    host: localhost
-    port: 6379
+  jwt:
+    secret: your-256-bit-secret-key-change-this-in-production-please-make-it-long-enough
+    access-token-expiration: 3600000    # 1시간 (밀리초)
+    refresh-token-expiration: 604800000 # 7일 (밀리초)
 
-  boot:
-    docker:
-      compose:
-        enabled: false  # Docker Compose ?? ? ?
+
+
+      # redis:
+    # host: localhost
+    # port: 3306 # 6379
+
+  # boot:
+    # docker:
+      # compose:
+        # enabled: false  # Docker Compose ?? ? ?
 
 server:
   port: 8080
@@ -30,8 +37,8 @@ logging:
     root: INFO
     org.springframework.web: DEBUG
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"  # ?? Actuator ????? ??
+# management:
+  # endpoints:
+    # web:
+      # exposure:
+        # include: "*"  # ?? Actuator ????? ??
