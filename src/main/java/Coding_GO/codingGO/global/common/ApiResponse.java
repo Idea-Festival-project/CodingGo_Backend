@@ -7,8 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ApiResponse<T> {
 
-    private String message;
-    private T data;
+    private final String message;  // final로 불변성 보장
+    private final T data;
 
     // 데이터 없이 메시지만 반환하는 경우
     public static <T> ApiResponse<T> of(String message) {

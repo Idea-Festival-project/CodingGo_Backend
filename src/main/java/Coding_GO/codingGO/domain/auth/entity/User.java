@@ -6,6 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -13,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@EntityListeners(AuditingEntityListener.class)  // 자동 날짜 업데이트
 public class User {
 
     @Id
@@ -20,10 +26,10 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 100)
-    private String email;          // 로그인에 사용할 이메일
+    private String email;
 
     @Column(nullable = false, length = 255)
-    private String password;       // 암호화된 비밀번호
+    private String password;
 
     @Column(nullable = false, unique = true, length = 50)
     private String nickname;
@@ -31,17 +37,27 @@ public class User {
     @Column(length = 255)
     private String profileImageUrl;
 
-    @Column(length = 255)
+    @Column(length = 500)
     private String introduction;
 
-    // 비밀번호 변경/메일 인증 등에서 쓸 수 있는 코드
     @Column(length = 100)
     private String resetPasswordCode;
 
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+
     // ====== 비즈니스 로직 메서드들 ======
 
+    /**
+     * 프로필 수정
+     */
     public void updateProfile(String nickname, String profileImageUrl, String introduction) {
-        if (nickname != null) {
+        if (nickname != null && !nickname.isBlank()) {
             this.nickname = nickname;
         }
         if (profileImageUrl != null) {
@@ -52,11 +68,24 @@ public class User {
         }
     }
 
+    /**
+     * 비밀번호 변경
+     */
     public void updatePassword(String encodedPassword) {
         this.password = encodedPassword;
     }
 
+    /**
+     * 비밀번호 재설정 코드 업데이트
+     */
     public void updateResetPasswordCode(String code) {
         this.resetPasswordCode = code;
+    }
+
+    /**
+     * 비밀번호 재설정 코드 제거
+     */
+    public void clearResetPasswordCode() {
+        this.resetPasswordCode = null;
     }
 }

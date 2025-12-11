@@ -5,9 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString(exclude = "password")  // 비밀번호 로그 노출 방지
 public class SignUpRequest {
 
     @NotBlank(message = "이메일은 필수입니다.")
