@@ -1,11 +1,16 @@
 package Coding_GO.codingGO.domain.community.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMax;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.CreationTimestamp;
-
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "comment")
@@ -14,6 +19,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class CommentEntity {
 
     @Id
@@ -31,7 +38,7 @@ public class CommentEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_comment_id")
-    private CommentEntity parentComment;;
+    private CommentEntity parentComment;
 
     @Column(nullable = false, name = "content", length = 255)
     private String content;
@@ -40,5 +47,10 @@ public class CommentEntity {
     @Column(nullable = false, name = "created_at", updatable = false)
     private LocalDateTime create_at;
 
+    @Column(nullable = false, name = "is_deleted")
+    private boolean is_deleted;
+
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentEntity> babyComments = new ArrayList<>();
 
 }
