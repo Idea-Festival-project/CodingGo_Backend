@@ -48,9 +48,9 @@ public class CommentEntity {
     private LocalDateTime create_at;
 
     @Column(nullable = false, name = "is_deleted")
-    private boolean is_deleted;
+    private boolean isDeleted;
 
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<CommentEntity> babyComments = new ArrayList<>();
-
 }
