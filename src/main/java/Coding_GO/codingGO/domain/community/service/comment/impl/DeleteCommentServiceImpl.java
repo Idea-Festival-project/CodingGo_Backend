@@ -24,6 +24,6 @@ public class DeleteCommentServiceImpl implements DeleteCommentService {
         if (!comment.getAuthor().getUserId().equals(userId)) {
             throw new GlobalException(ErrorCode.USER_NOT_AUTHORIZED);
         }
-        comment.set_deleted(true);
+        comment.setDeleted(true);
     }
 }
