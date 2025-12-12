@@ -14,8 +14,13 @@ public enum ErrorCode {
 
     //user
     USER_NOT_FOUND_EXCEPTION(404,"사용자를 찾을 수 없습니다."),
-    UNAUTHORIZED_EXCEPTION(403, "권한이 없습니다.");
+    UNAUTHORIZED_EXCEPTION(403, "권한이 없습니다."),
 
+    //comment
+    NOT_FOUND_COMMENT(400, "댓글을 찾을 수 없습니다."),
+    NOT_FOUND_PARENT_COMMENT(404, "부모댓글을 찾을 수 없습니다."),
+    PARENT_COMMENT_IS_DELETED(400, "삭제된 댓글에는 대댓글을 작성할 수 없습니다."),
+    CANNOT_UPDATE_DELETED_COMMENT(400,"댓글을 수정 할 수 없습니다.");
 
 
     private final int status;

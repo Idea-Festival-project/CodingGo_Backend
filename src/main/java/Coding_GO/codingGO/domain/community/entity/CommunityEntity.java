@@ -3,7 +3,9 @@ package Coding_GO.codingGO.domain.community.entity;
 import Coding_GO.codingGO.domain.community.data.constant.CommunityCategory;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Cache;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,7 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class CommunityEntity {
     @Id
     @Column(nullable = false, name = "post_id")
