@@ -38,7 +38,7 @@ public class CreateCommentServiceImpl implements CreateCommentService {
         if (parentCommentId != null) {
             parentComment = commentRepository.findById(parentCommentId)
                     .orElseThrow(() -> new GlobalException(ErrorCode.NOT_FOUND_PARENT_COMMENT));
-            if (parentComment.is_deleted()) {
+            if (parentComment.isDeleted()) {
                 throw new GlobalException(ErrorCode.PARENT_COMMENT_IS_DELETED);
             }
         }
