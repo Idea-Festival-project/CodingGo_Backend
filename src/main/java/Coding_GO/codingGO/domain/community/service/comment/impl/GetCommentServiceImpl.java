@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class GetCommentServiceImpl implements GetCommentService {
 
-    private final CommentRepository CommentRepository;
+    private final CommentRepository commentRepository;
     private final GetCommentMapper mapper;
     private final CommunityRepository communityRepository;
 
