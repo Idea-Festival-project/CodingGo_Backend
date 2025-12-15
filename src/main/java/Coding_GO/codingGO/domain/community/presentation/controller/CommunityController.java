@@ -227,15 +227,15 @@ public class CommunityController {
             )
     })
     public ResponseEntity<CreateCommentResponse> updateComment(
-            @RequestParam("comment_id") Long comment_id,
+            @PathVariable("comment_id") Long commentId,
             @RequestBody @Valid UpdateCommentRequest request,
             @AuthenticationPrincipal Long userId
     ) {
-        CreateCommentResponse comment = updateCommentService.execute(comment_id, request, userId);
+        CreateCommentResponse comment = updateCommentService.execute(commentId, request, userId);
         return ResponseEntity.ok(comment);
     }
 
-    @DeleteMapping("/{postId}/comments")
+    @DeleteMapping("/comments/{comment_id}")
     @Operation(summary = "커뮤니티 댓글 삭제", description = "커뮤니티 댓글을 삭제합니다.")
     @ApiResponses(value = {
             @ApiResponse(
