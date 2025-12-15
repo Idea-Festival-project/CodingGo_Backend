@@ -30,7 +30,7 @@ public class GetCommentServiceImpl implements GetCommentService {
         validateCommunityExists(postId);
 
         List<CommentEntity> rootComments
-                = CommentRepository.findCommentsByPostIdWithAuthor(postId);
+                = commentRepository.findCommentsByPostIdWithAuthor(postId);
 
         return mapper.buildCommentTree(rootComments);
     }
