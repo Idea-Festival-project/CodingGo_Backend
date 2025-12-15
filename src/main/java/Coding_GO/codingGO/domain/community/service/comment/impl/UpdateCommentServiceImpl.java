@@ -24,13 +24,13 @@ public class UpdateCommentServiceImpl implements UpdateCommentService {
     @Override
     public CreateCommentResponse execute(Long commentId, UpdateCommentRequest request, Long userId) {
         CommentEntity comment = commentRepository.findById(commentId)
-                .orElseThrow(()->new GlobalException(ErrorCode.NOT_FOUND_PARENT_COMMENT));
+                .orElseThrow(()->new GlobalException(ErrorCode.NOT_FOUND_COMMENT));
 
         if(!comment.getAuthor().getUserId().equals(userId)){
             throw new GlobalException(ErrorCode.USER_NOT_AUTHORIZED);
         }
 
-        if(comment.is_deleted()){
+        if(comment.isDeleted()){
             throw new GlobalException(ErrorCode.CANNOT_UPDATE_DELETED_COMMENT);
         }
         comment.setContent(request.content());
