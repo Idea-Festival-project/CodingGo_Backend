@@ -27,17 +27,21 @@ public class GetCommentMapper {
     }
 
     public List<GetCommentResponse> buildCommentTree(List<CommentEntity> comments) {
-        Map<Long, GetCommentResponse> map = new HashMap<>();
+        Map<Long, GetCommentResponse> commentMap = new HashMap<>();
         List<GetCommentResponse> babyComments = new ArrayList<>();
 
         for (CommentEntity comment : comments) {
-            GetCommentResponse response =map.get(comment.getCommentId());
+            GetCommentResponse response = getCommentResponse(comment);
+            commentMap.put(comment.getCommentId(), response);
+        }
+
+        for (GetCommentResponse response : commentMap.values()) {
             Long parentCommentId = response.getParentCommentId();
 
             if (parentCommentId == null) {
                 babyComments.add(response);
             } else {
-                GetCommentResponse parent = map.get(parentCommentId);
+                GetCommentResponse parent = commentMap.get(parentCommentId);
                 if (parent != null) {
                     parent.getBabyComment().add(response);
                 }
