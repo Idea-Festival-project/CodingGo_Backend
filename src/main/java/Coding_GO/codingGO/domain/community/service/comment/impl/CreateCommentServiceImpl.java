@@ -47,7 +47,7 @@ public class CreateCommentServiceImpl implements CreateCommentService {
                 .author(author)
                 .post(community)
                 .parentComment(parentComment)
-                .is_deleted(false)
+                .isDeleted(false)
                 .build();
         CommentEntity save = commentRepository.save(comment);
         return mapper.toResponse(save);
