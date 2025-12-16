@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import static Coding_GO.codingGO.domain.community.entity.QCommentEntity.commentEntity;
 import static Coding_GO.codingGO.domain.community.entity.QUserEntity.userEntity;
-import static Coding_GO.codingGO.domain.community.entity.QCommunityEntity.communityEntity;
 
 import java.util.List;
 
