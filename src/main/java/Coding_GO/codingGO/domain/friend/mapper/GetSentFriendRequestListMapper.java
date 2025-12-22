@@ -29,4 +29,3 @@ public class GetSentFriendRequestListMapper {
                 .collect(Collectors.toList());
     }
 }
-}
