@@ -24,9 +24,9 @@ public class AcceptFriendRequestServiceImpl implements AcceptFriendRequestServic
         FriendEntity friend = friendRepository.findById(friendId)
                 .orElseThrow(()-> new GlobalException(ErrorCode.FRIEND_NOT_FOUND));
 
-        if(!friend.getFriend().getUserId().equals(userId)){{
+        if(!friend.getFriend().getUserId().equals(userId)){
             throw new GlobalException(ErrorCode.UNAUTHORIZED_EXCEPTION);
-        }}
+        }
 
         if(friend.getStatus() == FriendshipStatus.ACCEPTED){
             throw new GlobalException(ErrorCode.ALREADY_FRIENDS);
