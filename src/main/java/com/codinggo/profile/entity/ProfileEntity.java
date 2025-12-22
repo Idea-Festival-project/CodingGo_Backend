@@ -50,7 +50,9 @@ public class ProfileEntity {
         this.updatedAt = LocalDateTime.now();
     }
 
-    // 닉네임 수정
+    /**
+     * 닉네임 수정
+     */
     public void updateNickname(String nickname) {
         if (nickname != null && !nickname.isBlank()) {
             this.nickname = nickname;
