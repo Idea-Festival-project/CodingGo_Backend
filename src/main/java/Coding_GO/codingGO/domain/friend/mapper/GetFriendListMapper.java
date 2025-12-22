@@ -14,11 +14,11 @@ public class GetFriendListMapper {
         UserEntity friendUser = friendEntity.getAuthor().getUserId().equals(userId) ? friendEntity.getFriend() : friendEntity.getAuthor();
 
         return FriendItem.builder()
-                .userId(friendEntity.getUserId())
+                .userId(friendUser.getUserId())
                 .username(friendUser.getUsername())
                 .nickname(friendUser.getNickname())
                 .profileImageUrl(friendUser.getProfileImageUrl())
-                .friendId(friendUser.getFriendId())
+                .friendId(friendEntity.getFriendshipId())
                 .build();
     }
 
