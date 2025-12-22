@@ -16,11 +16,11 @@ public class GetPendingRequestListMapper {
 
         return GetPendingFriendRequestResponseItemDto.builder()
                 .friendId(friendEntity.getFriendshipId())
-                .username(author.getUserId())
-                .username(author.getUserName())
+                .userId(author.getUserId())
+                .username(author.getUsername())
                 .nickname(author.getNickname())
                 .profileImageUrl(author.getProfileImageUrl())
-                .status(friendEntity.getStatus().equals(FriendshipStatus.PENDING))
+                .status(friendEntity.getStatus())
         .build();
     }
     public List<GetPendingFriendRequestResponseItemDto> toGetPendingFriendRequestResponseItemDtoList(List<FriendEntity> friendEntities) {
