@@ -20,7 +20,7 @@ public class DeleteFriendServiceImpl implements DeleteFriendService {
     private final FriendRepository friendRepository;
 
     @Override
-    public void deleteFriend(Long targetUserId, Long userId) {
+    public void execute(Long targetUserId, Long userId) {
 
         if(userId.equals(targetUserId)){
             throw new GlobalException(ErrorCode.SELF_FRIEND_DELETE);
