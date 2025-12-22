@@ -3,6 +3,7 @@ package Coding_GO.codingGO.domain.friend.presentation.controller;
 
 import Coding_GO.codingGO.domain.friend.presentation.data.request.SendFriendRequest;
 import Coding_GO.codingGO.domain.friend.presentation.data.response.GetFriendListResponse;
+import Coding_GO.codingGO.domain.friend.presentation.data.response.GetPendingFriendRequestResponse;
 import Coding_GO.codingGO.domain.friend.presentation.data.response.SendFriendResponse;
 import Coding_GO.codingGO.domain.friend.service.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -96,36 +97,6 @@ public class FriendController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @GetMapping("/request/received")
-    @Operation(summary = "받은 친구 요청 조회", description = "받은 친구 요청 조회합니다.")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "받은 친구 요청 조회 성공",
-                            content = @Content(mediaType = "application/json")
-                    ),
-                    @ApiResponse(
-                            responseCode = "401",
-                            description = "인증 실패",
-                            content = @Content
-                    ),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "서버 에러",
-                            content = @Content
-                    )
-            }
-    )
-    public ResponseEntity<PendingFriendRequestResponse> getPendingRequest(
-            @AuthenticationPrincipal Long userId,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int limit
-    ) {
-        PendingFriendRequestResponse response = friendSearchService.execute(userId, page, limit);
-        return ResponseEntity.ok(response);
-    }
-
     @PostMapping("/request/received/{friends_id}/accept")
     @Operation(summary = "친구 요청 수락", description = "친구 요청 수락합니다.")
     @ApiResponses(
@@ -202,7 +173,7 @@ public class FriendController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{targetUser_id}}")
+    @DeleteMapping("/{targetUser_id}")
     @Operation(summary = "친구 삭제", description = "친구를 삭제합니다")
     @ApiResponses(
             value = {
@@ -260,12 +231,12 @@ public class FriendController {
                             content = @Content
                     )
             })
-    public ResponseEntity<GetPendingRequestsResponse> getPendingRequests(
+    public ResponseEntity<GetPendingFriendRequestResponse> getPendingRequests(
             @AuthenticationPrincipal Long userId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int limit
     ) {
-        GetPendingRequestsResponse response = getPendingFrienddRequestService.execute(userId, page, limit);
+        GetPendingFriendRequestResponse response = getPendingFrienddRequestService.execute(userId, page, limit);
         return ResponseEntity.ok(response);
     }
 
@@ -289,12 +260,12 @@ public class FriendController {
                             content = @Content
                     )
             })
-    public ResponseEntity<GetSentRequestResponse> getSentRequest(
+    public ResponseEntity<GetPendingFriendRequestResponse> getSentRequest(
             @AuthenticationPrincipal Long userId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int limit
     ){
-        GetSentRequestResponse response =  getSentFriendRequestService.execute(userId,page,limit);
+        GetPendingFriendRequestResponse response =  getSentFriendRequestService.execute(userId,page,limit);
         return ResponseEntity.ok(response);
     }
 }
