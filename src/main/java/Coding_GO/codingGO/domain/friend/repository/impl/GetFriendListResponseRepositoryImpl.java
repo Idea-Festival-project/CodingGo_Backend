@@ -29,7 +29,7 @@ public class GetFriendListResponseRepositoryImpl implements GetFriendListRespons
                 .join(friend.friend).fetchJoin()
                 .where(
                         friend.author.userId.eq(userId)
-                                .or(friend.friend.friendId.eq(userId)),
+                                .or(friend.friend.userId.eq(userId)),
                         (friend.status.eq(FriendshipStatus.ACCEPTED))
                 )
                 .orderBy(friend.createdAt.desc())
