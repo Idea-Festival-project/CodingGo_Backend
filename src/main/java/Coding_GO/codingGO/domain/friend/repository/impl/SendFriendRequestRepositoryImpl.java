@@ -22,9 +22,9 @@ public class SendFriendRequestRepositoryImpl implements SendFriendRequestReposit
                 queryFactory
                         .selectFrom(friendship)
                         .where(
-                                friendship.user.userId.eq(userId)
+                                friendship.author.userId.eq(userId)
                                         .and(friendship.friend.userId.eq(friendId))
-                                        .or(friendship.user.userId.eq(friendId)
+                                        .or(friendship.author.userId.eq(friendId)
                                                 .and(friendship.friend.userId.eq(userId)))
                         )
                         .fetchOne()
