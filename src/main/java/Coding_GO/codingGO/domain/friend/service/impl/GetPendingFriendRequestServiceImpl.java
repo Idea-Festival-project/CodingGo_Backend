@@ -29,7 +29,7 @@ public class GetPendingFriendRequestServiceImpl implements GetPendingFriendReque
 
         Pageable pageable = PageRequest.of(page, limit);
 
-        Page<FriendEntity> requestPage = friendRepository.findPendingRequests(userId,pageable);
+        Page<FriendEntity> requestPage = friendRepository.findPendingRequestList(userId,pageable);
 
         List<GetPendingFriendRequestResponseItemDto> requestItem =
                 mapper.toGetPendingFriendRequestResponseItemDtoList(requestPage.getContent());
@@ -37,7 +37,7 @@ public class GetPendingFriendRequestServiceImpl implements GetPendingFriendReque
        GetPendingFriendRequestResponse.GetFriendRequestResponse data =
                GetPendingFriendRequestResponse.GetFriendRequestResponse.builder()
                        .items(requestItem)
-                       .currentPage((int) requestPage.getTotalElements())
+                       .totalCount((int) requestPage.getTotalElements())
                        .currentPage(page)
                        .totalPage(requestPage.getTotalPages())
                        .build();
