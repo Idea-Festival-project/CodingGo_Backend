@@ -32,7 +32,7 @@ public class GetPendingFriendRequestRepositoryImpl implements GetPendingFriendRe
                 .orderBy(friend.createdAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .fetchOne();
+                .fetch();
 
         Long total = queryFactory
                 .select(friend.count())
