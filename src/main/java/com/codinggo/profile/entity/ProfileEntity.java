@@ -1,7 +1,12 @@
 package com.codinggo.profile.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "profile")
@@ -22,14 +27,47 @@ public class ProfileEntity {
     @Column(name = "nickname", length = 50)
     private String nickname;
 
-    @Column(name = "pio", length = 250)
-    private String pio;
+    @Column(name = "bio", length = 250)
+    private String bio;
 
-    public void changeNickname(String newNickname) {
-        this.nickname = newNickname;
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
-    public void changePio(String newPio) {
-        this.pio = newPio;
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    // 닉네임 수정
+    public void updateNickname(String nickname) {
+        if (nickname != null && !nickname.isBlank()) {
+            this.nickname = nickname;
+        }
+    }
+
+    /**
+     * 자기소개 수정
+     */
+    public void updateBio(String bio) {
+        this.bio = bio;
+    }
+
+    /**
+     * 프로필 이미지 수정
+     */
+    public void updateProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 }
