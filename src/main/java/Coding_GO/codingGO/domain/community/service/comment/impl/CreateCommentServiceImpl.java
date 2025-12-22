@@ -10,6 +10,8 @@ import Coding_GO.codingGO.domain.community.repository.CommunityRepository;
 import Coding_GO.codingGO.domain.community.service.comment.CreateCommentService;
 import Coding_GO.codingGO.global.exception.ErrorCode;
 import Coding_GO.codingGO.global.exception.GlobalException;
+import com.codinggo.auth.entity.UserEntity;
+import com.codinggo.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
