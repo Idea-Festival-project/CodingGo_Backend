@@ -33,8 +33,8 @@ public class SendFriendRequestServiceImpl implements SendFriendRequestService {
 
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow(() -> new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION));
-        UserEntity friend = friendRepository.findById(friendId)
-                .orElseThrow(() -> new GlobalException(ErrorCode.FRIEND_NOT_FOUND));
+        UserEntity friend = userRepository.findById(friendId)
+                .orElseThrow(() -> new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION));
 
         var checkFriendShip = friendRepository.findByFriendShip(userId,friendId)
                 .or(()-> friendRepository.findByFriendShip(friendId,userId));
