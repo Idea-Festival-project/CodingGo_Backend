@@ -13,6 +13,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static Coding_GO.codingGO.domain.problem.entity.QProblemEntity.problemEntity;
+import static Coding_GO.codingGO.domain.record.entity.QStudyRecordEntity.studyRecordEntity;
+
 @Repository
 @RequiredArgsConstructor
 public class ProblemRepositoryCustomImpl implements ProblemRepositoryCustom {
@@ -27,18 +30,20 @@ public class ProblemRepositoryCustomImpl implements ProblemRepositoryCustom {
 
         List<ProblemResponse> content = queryFactory
                 .select(Projections.constructor(ProblemResponse.class,
-                        problem.problemId, problem.title, problem.tier, problem.solvedCount, problem.tags,
+                        problem.problemId,
+                        problem.title,
+                        problem.tier,
+                        problem.solvedCount,
+                        problem.tag,
                         record.recordId.isNotNull(),
                          problem.difficulty.multiply(10).add(50)
                 ))
                 .from(problem)
-                .leftJoin(record).on(record.problem.eq(problem), record.user.userId.eq(userId))
+                .leftJoin(record).on(
+                        record.problem.eq(problem),
+                        record.user.userId.eq(userId))
                 .where(problem.problemId.between(startId, endId))
                 .orderBy(problem.solvedCount.desc()) // 인기순 정렬
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-                .orderBy(problem.solvedCount.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

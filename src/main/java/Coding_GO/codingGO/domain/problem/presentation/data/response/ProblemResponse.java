@@ -7,7 +7,7 @@ public record ProblemResponse(
         String title,
         String tier,
         int solvedCount,
-        List<String> tags,
+        String tags,
         boolean isSolved,
         Integer rewardPoint
 ) {

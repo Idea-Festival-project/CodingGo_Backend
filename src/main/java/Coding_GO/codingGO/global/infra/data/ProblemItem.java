@@ -9,5 +9,6 @@ public class ProblemItem {
     private Integer problemId;
     private String titleKo;
     private int level;
+    private int solvedCount;
     private List<TagItem> tags;
 }
