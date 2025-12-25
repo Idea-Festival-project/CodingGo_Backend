@@ -4,13 +4,12 @@ import Coding_GO.codingGO.domain.record.data.InternalStats;
 import Coding_GO.codingGO.domain.record.repository.StudyRecordRepository;
 import Coding_GO.codingGO.domain.record.service.StudyRecordService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class StudyRecordServiceImpl implements StudyRecordService {
 
