@@ -74,7 +74,9 @@ public class AuthController {
     })
     public ResponseEntity<Void> logout(HttpServletRequest request) {
         String token = jwtProvider.resolveToken(request);
-        authService.logout(token);
+        if (token != null) {
+            authService.logout(token);
+        }
         return ResponseEntity.noContent().build();
     }
 }
