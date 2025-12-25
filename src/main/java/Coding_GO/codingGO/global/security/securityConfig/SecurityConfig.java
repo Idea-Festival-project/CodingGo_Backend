@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         // 1. 회원가입/로그인 관련 허용
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/CodingGo/auth/**").permitAll()
                         // 2. 스웨거(Swagger) 관련 경로 모두 허용
                         .requestMatchers(
                                 "/swagger-ui/**",
