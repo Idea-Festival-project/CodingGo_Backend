@@ -39,6 +39,10 @@ public class AuthServiceImpl implements AuthService {
             throw new GlobalException(ErrorCode.AUTHENTICATION_NUMBER_MISMATCH);
         }
 
+        if(!userRepository.existsByNickname(request.nickname())) {
+            throw new GlobalException(ErrorCode.ALREADY_EXIST_NICKNAME);
+        }
+
         userRepository.save(UserEntity.builder()
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
