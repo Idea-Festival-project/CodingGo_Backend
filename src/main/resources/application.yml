@@ -2,7 +2,7 @@ spring:
   datasource:
     url: ${MYSQL_URL:jdbc:mysql://localhost:3306/codinggo?useSSL=false&serverTimezone=Asia/Seoul}
     username: ${MYSQL_USER:root}
-    password: ${MYSQL_PASSWORD:whitekid07}
+    password: ${MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -13,17 +13,15 @@ spring:
       hibernate:
         format_sql: ${JPA_FORMAT_SQL:true}
 
-  # Redis 설정
   redis:
     host: ${REDIS_HOST:localhost}
     port: ${REDIS_PORT:6379}
 
-  # 이메일 발송 설정 (G메일)
   mail:
     host: smtp.gmail.com
     port: 587
-    username: s25069@gsm.hs.kr
-    password: vrdejrxelxmgrjkw
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -34,11 +32,10 @@ spring:
           timeout: 5000
           writetimeout: 5000
 
-# JWT 설정 (이 이름들이 자바 코드의 ${} 안으로 들어갑니다)
 jwt:
-  secret: CodingGO_SecretKey_Gsm_Project_2025_Very_Long_Key_For_HS256_Safe
-  access-token-validity: 1800000 # 30분
-  refresh-token-validity: 604800000 # 7일
+  secret: ${JWT_SECRET}
+  access-token-validity: 1800000        # 30분
+  refresh-token-validity: 604800000     # 7일
 
 server:
   port: 8080
