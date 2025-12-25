@@ -36,7 +36,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         if (!emailService.verifyCode(request.email(), request.code())) {
-            throw new GlobalException(ErrorCode.AUTHHENTICATION_NUMBER_MISMATH);
+            throw new GlobalException(ErrorCode.AUTHENTICATION_NUMBER_MISMATCH);
         }
 
         userRepository.save(UserEntity.builder()
