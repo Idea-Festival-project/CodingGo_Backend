@@ -5,10 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -17,9 +17,10 @@ public class EmailServiceImpl implements EmailService {
     private final JavaMailSender mailSender;
     private final StringRedisTemplate redisTemplate;
 
+    @Async
     @Override
     public void sendCode(String email) {
-        String code = String.format("%06d", new Random().nextInt(1000000));
+        String code = String.format("%06d", new java.security.SecureRandom().nextInt(1000000));
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
@@ -33,7 +34,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public boolean verifyCode(String email, String code) {
         String storedCode = redisTemplate.opsForValue().get("AUTH_CODE:" + email);
-        return code.equals(storedCode);
+        return code != null && code.equals(storedCode);
     }
 
     @Override
