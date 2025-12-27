@@ -1,6 +1,7 @@
 package Coding_GO.codingGO.domain.friend.repository.impl;
 
 import Coding_GO.codingGO.domain.friend.entity.FriendEntity;
+import Coding_GO.codingGO.domain.friend.entity.QFriendEntity;
 import Coding_GO.codingGO.domain.friend.repository.SendFriendRequestRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class SendFriendRequestRepositoryImpl implements SendFriendRequestRepositoryCustom {
+public class FriendRepositoryImpl implements SendFriendRequestRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
@@ -22,9 +23,9 @@ public class SendFriendRequestRepositoryImpl implements SendFriendRequestReposit
                 queryFactory
                         .selectFrom(friendship)
                         .where(
-                                friendship.user.userId.eq(userId)
+                                friendship.author.userId.eq(userId)
                                         .and(friendship.friend.userId.eq(friendId))
-                                        .or(friendship.user.userId.eq(friendId)
+                                        .or(friendship.author.userId.eq(friendId)
                                                 .and(friendship.friend.userId.eq(userId)))
                         )
                         .fetchOne()

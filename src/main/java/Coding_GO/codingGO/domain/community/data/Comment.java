@@ -3,6 +3,7 @@ package Coding_GO.codingGO.domain.community.data;
 import Coding_GO.codingGO.domain.community.data.constant.CommunityCategory;
 import Coding_GO.codingGO.domain.community.entity.CommentEntity;
 import Coding_GO.codingGO.domain.community.entity.CommunityEntity;
+import Coding_GO.codingGO.domain.user.entity.UserEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;

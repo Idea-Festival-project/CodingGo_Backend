@@ -2,23 +2,29 @@ package Coding_GO.codingGO.domain.community.mapper.comment;
 
 import Coding_GO.codingGO.domain.community.entity.CommentEntity;
 import Coding_GO.codingGO.domain.community.presentation.data.response.comment.GetCommentResponse;
+import Coding_GO.codingGO.domain.profile.entity.UserProfileEntity;
+import Coding_GO.codingGO.domain.user.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class GetCommentMapper {
 
     public GetCommentResponse getCommentResponse(CommentEntity entity) {
 
+        UserEntity author = entity.getAuthor();
+        UserProfileEntity profile = author.getProfile();
+
+        String base64Image = (profile != null && profile.getProfileImage() != null)
+                ? Base64.getEncoder().encodeToString(profile.getProfileImage())
+                : null;
+
         return GetCommentResponse.builder()
                 .commentId(entity.getCommentId())
-                .userId(entity.getAuthor().getUserId())
-                .username(entity.getAuthor().getUserName())
-                .profileImageUrl(entity.getAuthor().getProfileImageUrl())
+                .userId(author.getUserId())
+                .username(profile != null ? profile.getNickname() : "알 수 없는 사용자")
+                .profileImageUrl(base64Image)
                 .content(entity.getContent())
                 .parentCommentId(entity.getParentComment() != null ? entity.getParentComment().getCommentId() : null)
                 .createdAt(entity.getCreate_at())

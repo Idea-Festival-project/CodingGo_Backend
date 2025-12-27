@@ -1,5 +1,6 @@
 package Coding_GO.codingGO.domain.community.entity;
 
+import Coding_GO.codingGO.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import lombok.*;
@@ -52,5 +53,6 @@ public class CommentEntity {
 
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @Builder.Default
     private List<CommentEntity> babyComments = new ArrayList<>();
 }

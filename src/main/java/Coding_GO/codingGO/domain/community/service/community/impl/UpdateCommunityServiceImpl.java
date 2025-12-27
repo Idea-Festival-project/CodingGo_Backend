@@ -1,14 +1,13 @@
-package Coding_GO.codingGO.domain.community.service.impl;
+package Coding_GO.codingGO.domain.community.service.community.impl;
 
 
 import Coding_GO.codingGO.domain.community.data.Community;
 import Coding_GO.codingGO.domain.community.entity.CommunityEntity;
-import Coding_GO.codingGO.domain.community.mapper.CreateCommunityMapper;
-import Coding_GO.codingGO.domain.community.presentation.data.request.CreateCommunityRequest;
-import Coding_GO.codingGO.domain.community.presentation.data.request.UpdateCommunityRequest;
-import Coding_GO.codingGO.domain.community.presentation.data.response.CreateCommunityResponse;
+import Coding_GO.codingGO.domain.community.mapper.communirty.CreateCommunityMapper;
+import Coding_GO.codingGO.domain.community.presentation.data.request.community.UpdateCommunityRequest;
+import Coding_GO.codingGO.domain.community.presentation.data.response.community.CreateCommunityResponse;
 import Coding_GO.codingGO.domain.community.repository.CommunityRepository;
-import Coding_GO.codingGO.domain.community.service.UpdateCommunityService;
+import Coding_GO.codingGO.domain.community.service.community.UpdateCommunityService;
 import Coding_GO.codingGO.global.exception.ErrorCode;
 import Coding_GO.codingGO.global.exception.GlobalException;
 import lombok.RequiredArgsConstructor;

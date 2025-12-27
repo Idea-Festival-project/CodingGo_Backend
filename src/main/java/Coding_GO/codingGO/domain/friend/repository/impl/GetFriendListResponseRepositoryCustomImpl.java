@@ -2,7 +2,8 @@ package Coding_GO.codingGO.domain.friend.repository.impl;
 
 import Coding_GO.codingGO.domain.friend.data.constant.FriendshipStatus;
 import Coding_GO.codingGO.domain.friend.entity.FriendEntity;
-import Coding_GO.codingGO.domain.friend.repository.GetSentFriendRequestRepositoryCustom;
+import Coding_GO.codingGO.domain.friend.entity.QFriendEntity;
+import Coding_GO.codingGO.domain.friend.repository.GetFriendListResponseRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,20 +15,23 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class GetSentFriendRequestRepositoryImpl implements GetSentFriendRequestRepositoryCustom {
+public class GetFriendListResponseRepositoryCustomImpl implements GetFriendListResponseRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public Page<FriendEntity> findSentRequestList(Long userId, Pageable pageable) {
+    public Page<FriendEntity> findPendingRequests(Long userId, Pageable pageable) {
+
         QFriendEntity friend = QFriendEntity.friendEntity;
 
-        List<FriendEntity> friendList = queryFactory
+        List<FriendEntity> content = queryFactory
                 .selectFrom(friend)
+                .join(friend.author).fetchJoin()
                 .join(friend.friend).fetchJoin()
                 .where(
                         friend.author.userId.eq(userId)
-                                .and(friend.status.eq(FriendshipStatus.PENDING))
+                                .or(friend.friend.userId.eq(userId)),
+                        (friend.status.eq(FriendshipStatus.ACCEPTED))
                 )
                 .orderBy(friend.createdAt.desc())
                 .offset(pageable.getOffset())
@@ -39,10 +43,11 @@ public class GetSentFriendRequestRepositoryImpl implements GetSentFriendRequestR
                 .from(friend)
                 .where(
                         friend.author.userId.eq(userId)
-                                .and(friend.status.eq(FriendshipStatus.PENDING))
+                                .or(friend.friend.userId.eq(userId)),
+                        (friend.status.eq(FriendshipStatus.ACCEPTED))
                 )
                 .fetchOne();
 
-        return new PageImpl<>(friendList, pageable, total!=null ?  total : 0);
+        return new PageImpl<>(content, pageable, total != null ? total : 0);
     }
 }

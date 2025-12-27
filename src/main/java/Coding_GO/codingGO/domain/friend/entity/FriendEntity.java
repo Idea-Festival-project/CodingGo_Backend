@@ -1,6 +1,7 @@
 package Coding_GO.codingGO.domain.friend.entity;
 
 import Coding_GO.codingGO.domain.friend.data.constant.FriendshipStatus;
+import Coding_GO.codingGO.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

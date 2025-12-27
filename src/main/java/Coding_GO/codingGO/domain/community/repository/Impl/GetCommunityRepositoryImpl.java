@@ -1,19 +1,18 @@
 package Coding_GO.codingGO.domain.community.repository.Impl;
 
 import Coding_GO.codingGO.domain.community.data.Community;
-
 import Coding_GO.codingGO.domain.community.entity.QCommentEntity;
 import Coding_GO.codingGO.domain.community.entity.QCommunityEntity;
+import Coding_GO.codingGO.domain.profile.entity.QUserProfileEntity;
 import Coding_GO.codingGO.domain.community.repository.GetCommunityRepository;
 import Coding_GO.codingGO.domain.user.entity.QUserEntity;
+import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.provider.QueryComment;
-import org.springframework.expression.Expression;
-import org.springframework.expression.spel.ast.Projection;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,37 +25,35 @@ public class GetCommunityRepositoryImpl implements GetCommunityRepository {
 
     @Override
     public Page<Community> findAllCommunityWithCommentCount(Pageable pageable) {
-        QCommunintyEntity communinty = QCommunityEntity.communityEntity;
+        QCommunityEntity community = QCommunityEntity.communityEntity;
         QCommentEntity comment = QCommentEntity.commentEntity;
         QUserEntity user = QUserEntity.userEntity;
-        QProfileEntity profile = QProfileEntity.profileEntity;
+        QUserProfileEntity profile = QUserProfileEntity.userProfileEntity;
 
         List<Community> communities = queryFactory
-                .select(Projection.constructor(Community.class,
-                        communinty.postId,
+                .select(Projections.constructor(Community.class,
+                        community.postId,
                         user.userId,
-                        user.username,
-
-                        Expression.cases()
+                        // CaseBuilder: 프로필 닉네임이 있으면 사용, 없으면 유저 닉네임 사용
+                        new CaseBuilder()
                                 .when(profile.nickname.isNotNull())
                                 .then(profile.nickname)
-                                .otherwise(user.username),
-
+                                .otherwise(user.nickname),
                         profile.profileImage,
-                        communinty.category,
-                        communinty.title,
-                        communinty.content,
-                        comment.commentId.count().intValue(),
-                        communinty.createdAt
-                        ))
-                .from(communinty)
-                .leftjoin(user).on(communinty.author.userId.eq(user.userId))
-                .leftJoin(profile).on(user.userId.eq(profile.user.userId))
-                .leftJoin(comment).on(comment.postId.eq(community.postId))
+                        community.category,
+                        community.title,
+                        community.content,
+                        comment.count(),
+                        community.createdAt
+                ))
+                .from(community)
+                .leftJoin(user).on(community.author.eq(user))
+                .leftJoin(profile).on(profile.user.eq(user))
+                .leftJoin(comment).on(comment.post.eq(community))
                 .groupBy(
                         community.postId,
                         user.userId,
-                        user.username,
+                        user.nickname,
                         profile.nickname,
                         profile.profileImage,
                         community.category,
@@ -68,12 +65,12 @@ public class GetCommunityRepositoryImpl implements GetCommunityRepository {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+
         Long total = queryFactory
                 .select(community.count())
                 .from(community)
                 .fetchOne();
 
-        return new PageImpl<>(content, pageable, total != null ? total : 0L);
-
+        return new PageImpl<>(communities, pageable, total != null ? total : 0L);
     }
 }

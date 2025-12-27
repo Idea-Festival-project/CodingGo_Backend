@@ -8,6 +8,8 @@ import Coding_GO.codingGO.domain.community.presentation.data.response.comment.Cr
 import Coding_GO.codingGO.domain.community.repository.CommentRepository;
 import Coding_GO.codingGO.domain.community.repository.CommunityRepository;
 import Coding_GO.codingGO.domain.community.service.comment.CreateCommentService;
+import Coding_GO.codingGO.domain.user.entity.UserEntity;
+import Coding_GO.codingGO.domain.user.repository.UserRepository;
 import Coding_GO.codingGO.global.exception.ErrorCode;
 import Coding_GO.codingGO.global.exception.GlobalException;
 import lombok.RequiredArgsConstructor;

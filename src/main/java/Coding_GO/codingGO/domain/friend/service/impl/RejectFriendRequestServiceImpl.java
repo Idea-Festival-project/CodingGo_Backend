@@ -24,16 +24,15 @@ public class RejectFriendRequestServiceImpl implements RejectFriendRequestServic
         FriendEntity friend = friendRepository.findById(friendId)
                 .orElseThrow(()-> new GlobalException(ErrorCode.FRIEND_NOT_FOUND));
 
-        if (!friend.getFriend().getUserId().equlas(userId)){
+        if (!friend.getFriend().getUserId().equals(userId)){
             throw new GlobalException(ErrorCode.UNAUTHORIZED_EXCEPTION);
         }
-        if (friend.getStatus() == FriendshipStatus.ACCEPTED){
-            throw new GlobalException(ErrorCode.ALREADY_FRIENDS);
-        }
-        if (friend.getStatus() == FriendshipStatus.PENDING){
+        if (friend.getStatus() != FriendshipStatus.PENDING){
             throw new GlobalException(ErrorCode.INVALID_STATUS);
         }
 
+        friend.setStatus(FriendshipStatus.REJECTED);
         friendRepository.save(friend);
     }
-}
+    }
+
