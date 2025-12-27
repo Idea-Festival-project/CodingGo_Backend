@@ -1,4 +1,4 @@
-package Coding_GO.codingGO.domain.community.presentation.data.response;
+package Coding_GO.codingGO.domain.community.presentation.data.response.community;
 
 import Coding_GO.codingGO.domain.community.data.Community;
 import Coding_GO.codingGO.domain.community.data.constant.CommunityCategory;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public record CreateCommunityResponse(
         Long postId,
-        String username,
+        String nickname,
         String profileImage,
         CommunityCategory category,
         String content,

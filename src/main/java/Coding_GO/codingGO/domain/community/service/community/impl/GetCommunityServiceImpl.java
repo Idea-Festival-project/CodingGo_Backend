@@ -1,10 +1,10 @@
-package Coding_GO.codingGO.domain.community.service.impl;
+package Coding_GO.codingGO.domain.community.service.community.impl;
 
 import Coding_GO.codingGO.domain.community.data.Community;
-import Coding_GO.codingGO.domain.community.mapper.GetCommunityMapper;
-import Coding_GO.codingGO.domain.community.presentation.data.response.GetCommunityListResponse;
+import Coding_GO.codingGO.domain.community.mapper.communirty.GetCommunityMapper;
+import Coding_GO.codingGO.domain.community.presentation.data.response.community.GetCommunityListResponse;
 import Coding_GO.codingGO.domain.community.repository.CommunityRepository;
-import Coding_GO.codingGO.domain.community.service.GetCommunityService;
+import Coding_GO.codingGO.domain.community.service.community.GetCommunityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -35,10 +35,9 @@ public class GetCommunityServiceImpl implements GetCommunityService {
         int pageSize = (limit == null || limit < 1) ? DEFAULT_PAGE_SIZE : limit;
 
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
-
         Page<Community> communityPage = communityRepository.findAllCommunityWithCommentCount(pageable);
 
-        return new GetCommunityListResponse(communityPage);
+        return mapper.toCommunityListResponse(communityPage);
 
     }
 }

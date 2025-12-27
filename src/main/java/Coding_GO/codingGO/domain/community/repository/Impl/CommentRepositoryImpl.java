@@ -7,13 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import static Coding_GO.codingGO.domain.community.entity.QCommentEntity.commentEntity;
-import static Coding_GO.codingGO.domain.community.entity.QUserEntity.userEntity;
+import static Coding_GO.codingGO.domain.user.entity.QUserEntity.userEntity;
 
 import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class GetCommentRepositoryImpl implements GetCommentRepositoryCustom {
+public class CommentRepositoryImpl implements GetCommentRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
@@ -24,7 +24,7 @@ public class GetCommentRepositoryImpl implements GetCommentRepositoryCustom {
                 .join(commentEntity.author, userEntity).fetchJoin()
                 .where(
                         commentEntity.post.postId.eq(postId),
-                        commentEntity.is_deleted.eq(false)
+                        commentEntity.isDeleted.eq(false)
                 )
                 .orderBy(
                         commentEntity.parentComment.commentId.asc().nullsFirst(),

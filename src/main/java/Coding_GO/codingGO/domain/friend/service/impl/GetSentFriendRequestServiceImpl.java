@@ -45,4 +45,4 @@ public class GetSentFriendRequestServiceImpl implements GetSentFriendRequestServ
                 .data(data).build();
     }
     }
-}
+

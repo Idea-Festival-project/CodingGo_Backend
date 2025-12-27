@@ -6,9 +6,9 @@ import Coding_GO.codingGO.domain.friend.mapper.SendFriendRequestMapper;
 import Coding_GO.codingGO.domain.friend.presentation.data.request.SendFriendRequest;
 import Coding_GO.codingGO.domain.friend.presentation.data.response.SendFriendResponse;
 import Coding_GO.codingGO.domain.friend.repository.FriendRepository;
-import Coding_GO.codingGO.domain.friend.repository.SendFriendRequestRepositoryCustom;
-import Coding_GO.codingGO.domain.friend.repository.impl.SendFriendRequestRepositoryImpl;
 import Coding_GO.codingGO.domain.friend.service.SendFriendRequestService;
+import Coding_GO.codingGO.domain.user.entity.UserEntity;
+import Coding_GO.codingGO.domain.user.repository.UserRepository;
 import Coding_GO.codingGO.global.exception.ErrorCode;
 import Coding_GO.codingGO.global.exception.GlobalException;
 import lombok.RequiredArgsConstructor;
@@ -33,8 +33,8 @@ public class SendFriendRequestServiceImpl implements SendFriendRequestService {
 
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow(() -> new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION));
-        UserEntity friend = friendRepository.findById(friendId)
-                .orElseThrow(() -> new GlobalException(ErrorCode.FRIEND_NOT_FOUND));
+        UserEntity friend = userRepository.findById(friendId)
+                .orElseThrow(() -> new GlobalException(ErrorCode.USER_NOT_FOUND_EXCEPTION));
 
         var checkFriendShip = friendRepository.findByFriendShip(userId,friendId)
                 .or(()-> friendRepository.findByFriendShip(friendId,userId));

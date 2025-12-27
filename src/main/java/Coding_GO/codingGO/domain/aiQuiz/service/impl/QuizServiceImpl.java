@@ -48,7 +48,7 @@ public class QuizServiceImpl implements QuizService {
 
         try {
             List<String> choices = objectMapper.readValue(quiz.getChoicesJson(), new TypeReference<>() {});
-            return new QuizResponse(quiz.getQuizId(), diff, (int)solvedCount + 1, totalMax, choices, quiz.getQuestionText());
+            return new QuizResponse(quiz.getQuizId(), quiz.getQuestionText(), (int)solvedCount + 1, totalMax, choices, diff);
         } catch (JsonProcessingException e) {
             throw new GlobalException(ErrorCode.QUIZ_DATA_ERROR);
         }

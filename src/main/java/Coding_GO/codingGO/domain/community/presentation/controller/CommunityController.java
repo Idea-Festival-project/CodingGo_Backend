@@ -151,8 +151,6 @@ public class CommunityController {
         return ResponseEntity.noContent().build();
     }
 
-    // 댓글 api
-
     @GetMapping("/{post_id}/comments")
     @Operation(summary = "커뮤니티 댓글 조회", description = "선택한 해당 커뮤니티의 댓글을 조회합니다.")
     @ApiResponses(value = {
@@ -255,10 +253,10 @@ public class CommunityController {
             )
     })
     public ResponseEntity<Void> deleteComment(
-            @RequestParam("comment_id") Long comment_id,
+            @PathVariable("comment_id") Long commentId,
             @AuthenticationPrincipal Long userId
     ) {
-        deleteCommentService.execute(comment_id, userId);
+        deleteCommentService.execute(commentId, userId);
         return ResponseEntity.noContent().build();
     }
 }

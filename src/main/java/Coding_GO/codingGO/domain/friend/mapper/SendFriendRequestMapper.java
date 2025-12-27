@@ -10,7 +10,7 @@ public class SendFriendRequestMapper {
     public SendFriendResponse toResponse(FriendEntity friend){
         return SendFriendResponse.builder()
                 .friendId(friend.getFriend().getUserId())
-                .friendId(friend.getStatus())
+                .status(friend.getStatus())
                 .build();
     }
 }

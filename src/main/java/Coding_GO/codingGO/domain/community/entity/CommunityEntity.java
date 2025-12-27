@@ -1,11 +1,12 @@
 package Coding_GO.codingGO.domain.community.entity;
 
 import Coding_GO.codingGO.domain.community.data.constant.CommunityCategory;
+import Coding_GO.codingGO.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Cache;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -41,12 +42,11 @@ public class CommunityEntity {
     @Column(nullable = false, name = "content", columnDefinition = "TEXT")
     private String content;
 
-    @CreationTimestamp
-    @Column(nullable = false, name = "created_at", updatable = false)
+    @CreatedDate
     private LocalDateTime createdAt;
-
-
+    
     //댓글 리스트 매핑을 위한 것
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+    @Builder.Default
     private List<CommentEntity> comments = new ArrayList<>();
 }

@@ -1,9 +1,9 @@
-package Coding_GO.codingGO.domain.community.service.impl;
+package Coding_GO.codingGO.domain.community.service.community.impl;
 
 
 import Coding_GO.codingGO.domain.community.entity.CommunityEntity;
 import Coding_GO.codingGO.domain.community.repository.CommunityRepository;
-import Coding_GO.codingGO.domain.community.service.DeleteCommunityService;
+import Coding_GO.codingGO.domain.community.service.community.DeleteCommunityService;
 import Coding_GO.codingGO.global.exception.ErrorCode;
 import Coding_GO.codingGO.global.exception.GlobalException;
 import lombok.RequiredArgsConstructor;
