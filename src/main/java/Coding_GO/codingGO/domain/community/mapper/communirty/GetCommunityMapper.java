@@ -7,7 +7,7 @@ import Coding_GO.codingGO.domain.community.presentation.data.CommunityData;
 import Coding_GO.codingGO.domain.community.presentation.data.CommunityInfo;
 import Coding_GO.codingGO.domain.community.presentation.data.CommunityPageInfo;
 import Coding_GO.codingGO.domain.community.presentation.data.response.comment.GetCommentResponse;
-import Coding_GO.codingGO.domain.community.presentation.data.response.community.GetCommunityListResponse;
+import Coding_GO.codingGO.domain.community.presentation.data.response.GetCommunityListResponse;
 import Coding_GO.codingGO.domain.profile.entity.UserProfileEntity;
 import Coding_GO.codingGO.domain.user.entity.UserEntity;
 import org.springframework.data.domain.Page;
@@ -23,7 +23,6 @@ public class GetCommunityMapper {
         UserEntity author = entity.getAuthor();
         UserProfileEntity profile = author.getProfile();
 
-        // 1. 이미지 byte[]를 Base64 문자열로 변환
         String base64Image = (profile != null && profile.getProfileImage() != null)
                 ? Base64.getEncoder().encodeToString(profile.getProfileImage())
                 : null;

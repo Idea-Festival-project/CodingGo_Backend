@@ -7,14 +7,14 @@ import Coding_GO.codingGO.domain.community.presentation.data.request.community.U
 import Coding_GO.codingGO.domain.community.presentation.data.response.comment.CreateCommentResponse;
 import Coding_GO.codingGO.domain.community.presentation.data.response.comment.GetCommentResponse;
 import Coding_GO.codingGO.domain.community.presentation.data.response.community.CreateCommunityResponse;
-import Coding_GO.codingGO.domain.community.presentation.data.response.community.GetCommunityListResponse;
+import Coding_GO.codingGO.domain.community.presentation.data.response.GetCommunityListResponse;
 import Coding_GO.codingGO.domain.community.service.comment.CreateCommentService;
 import Coding_GO.codingGO.domain.community.service.comment.DeleteCommentService;
 import Coding_GO.codingGO.domain.community.service.comment.GetCommentService;
 import Coding_GO.codingGO.domain.community.service.comment.UpdateCommentService;
 import Coding_GO.codingGO.domain.community.service.community.CreateCommunityService;
 import Coding_GO.codingGO.domain.community.service.community.DeleteCommunityService;
-import Coding_GO.codingGO.domain.community.service.community.GetCommunityService;
+import Coding_GO.codingGO.domain.community.service.GetCommunityService;
 import Coding_GO.codingGO.domain.community.service.community.UpdateCommunityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

@@ -2,9 +2,10 @@ package Coding_GO.codingGO.domain.community.service.community.impl;
 
 import Coding_GO.codingGO.domain.community.data.Community;
 import Coding_GO.codingGO.domain.community.mapper.communirty.GetCommunityMapper;
-import Coding_GO.codingGO.domain.community.presentation.data.response.community.GetCommunityListResponse;
+import Coding_GO.codingGO.domain.community.presentation.data.response.GetCommunityListResponse;
 import Coding_GO.codingGO.domain.community.repository.CommunityRepository;
-import Coding_GO.codingGO.domain.community.service.community.GetCommunityService;
+
+import Coding_GO.codingGO.domain.community.service.GetCommunityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
