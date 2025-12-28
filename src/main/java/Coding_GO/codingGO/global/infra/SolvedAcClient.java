@@ -15,6 +15,7 @@ public class SolvedAcClient {
                 .defaultHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0").build();
     }
 
+
     public SolvedSearchResponse search(String query, int page) {
         return webClient.get()
                 .uri(uri -> uri.path("/search/problem")

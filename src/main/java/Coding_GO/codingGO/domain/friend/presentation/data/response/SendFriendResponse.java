@@ -9,3 +9,4 @@ public record SendFriendResponse(
         Long friendId,
         FriendshipStatus status
 ){}
+

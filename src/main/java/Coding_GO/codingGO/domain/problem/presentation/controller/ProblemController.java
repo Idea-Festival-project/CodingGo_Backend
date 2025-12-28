@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProblemController {
     private final ProblemService problemService;
 
+
     @GetMapping
     @Operation(
             summary = "문제 목록 조회 및 실시간 포인트 정산",

@@ -23,6 +23,7 @@ public class Community {
     private Integer commentCount;
     private LocalDateTime createdAt;
 
+
     public Community(Long postId,Long userId,
                      String username, String nickname,
                      String profileImage, CommunityCategory category,

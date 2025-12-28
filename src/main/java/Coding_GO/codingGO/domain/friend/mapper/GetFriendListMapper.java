@@ -40,4 +40,5 @@ public class GetFriendListMapper {
                 .map(entity -> toFriendItemDto(entity, userId))
                 .collect(Collectors.toList());
     }
+
 }

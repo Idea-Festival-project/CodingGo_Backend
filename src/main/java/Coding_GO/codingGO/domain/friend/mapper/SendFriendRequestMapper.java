@@ -6,6 +6,7 @@ import Coding_GO.codingGO.domain.friend.presentation.data.response.SendFriendRes
 import org.springframework.stereotype.Component;
 
 @Component
+
 public class SendFriendRequestMapper {
     public SendFriendResponse toResponse(FriendEntity friend){
         return SendFriendResponse.builder()

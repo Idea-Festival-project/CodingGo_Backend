@@ -13,3 +13,4 @@ public interface UserProfileService {
     void updateProfile(Long userId, String bio, MultipartFile image) throws IOException;
 }
 
+

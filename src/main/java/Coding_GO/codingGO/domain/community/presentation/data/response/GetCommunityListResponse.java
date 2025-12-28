@@ -16,3 +16,4 @@ public record GetCommunityListResponse(
         CommunityData community
 ) {
 }
+

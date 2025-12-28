@@ -5,3 +5,4 @@ public record AiAnalysisResponse(
         Long userId
 ) {
 }
+

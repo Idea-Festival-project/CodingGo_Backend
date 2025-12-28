@@ -6,3 +6,4 @@ public record AiResultRequest(
         String language
 ) {
 }
+

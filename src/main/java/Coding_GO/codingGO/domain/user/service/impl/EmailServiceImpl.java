@@ -12,6 +12,7 @@ import java.time.Duration;
 
 @Service
 @RequiredArgsConstructor
+
 public class EmailServiceImpl implements EmailService {
 
     private final JavaMailSender mailSender;

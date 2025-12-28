@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:5175")
 public class AuthController {
+
     private final AuthService authService;
     private final EmailService emailService;
     private final JwtProvider jwtProvider;

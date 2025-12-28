@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class CreateCommunityServiceImpl implements CreateCommunityService {
 
+
     private final CommunityRepository communityRepository;
     private final UserRepository userRepository;
     private final CreateCommunityMapper mapper;

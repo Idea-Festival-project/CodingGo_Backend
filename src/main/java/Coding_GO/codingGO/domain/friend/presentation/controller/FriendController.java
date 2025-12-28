@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+
 @Tag(name = "Friend API", description = "친구 관련 API")
 @RequestMapping("/api/CodingGo/friend")
 @RestController

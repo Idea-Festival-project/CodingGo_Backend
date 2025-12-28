@@ -37,6 +37,7 @@ import java.util.List;
 
 public class CommunityController {
 
+
     private final CreateCommunityService createCommunityService;
     private final GetCommunityService getCommunityService;
     private final UpdateCommunityService updateCommunityService;

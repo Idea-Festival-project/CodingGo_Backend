@@ -22,6 +22,7 @@ public class QuizController {
 
     private final QuizService quizService;
 
+
     @GetMapping("/next/{lang}")
     @Operation(summary = "다음 단계 퀴즈 생성", description = "언어와 난이도를 바탕으로 AI가 새로운 퀴즈를 생성합니다.")
     @ApiResponses(value = {

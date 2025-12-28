@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum ErrorCode {
 
     //community
+
     COMMUNITY_NOT_FOUND_EXCEPTION(404,"게시글을 찾을 수 없습니다."),
     USER_NOT_AUTHORIZED(403, "이 글을 수정할 권한이 없습니다."),
     INVALID_CATEGORY_EXCEPTION(400, "잘못된 카테고리입니다."),

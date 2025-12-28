@@ -17,3 +17,4 @@ public record GetPendingFriendRequestResponseItemDto(
 
         FriendshipStatus status
 ) {}
+

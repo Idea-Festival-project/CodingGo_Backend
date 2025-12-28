@@ -46,6 +46,7 @@ public class GetCommunityRepositoryImpl implements GetCommunityRepository {
                         comment.count(),
                         community.createdAt
                 ))
+
                 .from(community)
                 .leftJoin(user).on(community.author.eq(user))
                 .leftJoin(profile).on(profile.user.eq(user))

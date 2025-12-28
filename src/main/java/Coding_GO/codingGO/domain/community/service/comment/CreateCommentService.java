@@ -6,3 +6,4 @@ import Coding_GO.codingGO.domain.community.presentation.data.response.comment.Cr
 public interface CreateCommentService {
     CreateCommentResponse execute(Long postId,Long user_id,CreateCommentRequest request);
 }
+

@@ -7,3 +7,4 @@ public record CreateCommentRequest(
         @JsonProperty("parent_comment_id")
         Long parentCommentId
 ) {}
+

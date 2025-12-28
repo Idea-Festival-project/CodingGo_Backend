@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UpdateCommentServiceImpl implements UpdateCommentService {
 
+
     private final CommentRepository commentRepository;
     private final CreateCommentMapper mapper;
 

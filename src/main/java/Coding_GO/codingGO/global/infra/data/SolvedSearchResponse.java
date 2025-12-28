@@ -11,3 +11,4 @@ public class SolvedSearchResponse {
     private int count;
     private List<ProblemItem> items;
 }
+

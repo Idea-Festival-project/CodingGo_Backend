@@ -5,3 +5,4 @@ public record AiRecommendedResponse(
         GeneratedQuiz quiz     // 생성된 퀴즈 객체
 ) {
 }
+

@@ -23,6 +23,7 @@ import java.io.IOException;
 @RequestMapping("/api/coding-go/profile")
 public class ProfileController {
 
+
     private final UserProfileService userProfileService;
 
     @GetMapping("/my")

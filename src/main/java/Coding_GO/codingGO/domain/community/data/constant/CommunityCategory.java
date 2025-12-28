@@ -5,3 +5,4 @@ public enum CommunityCategory {
     JAVA,
     PYTHON
 }
+

@@ -23,6 +23,7 @@ public class GetCommunityMapper {
         UserEntity author = entity.getAuthor();
         UserProfileEntity profile = author.getProfile();
 
+
         String base64Image = (profile != null && profile.getProfileImage() != null)
                 ? Base64.getEncoder().encodeToString(profile.getProfileImage())
                 : null;

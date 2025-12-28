@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UpdateCommunityServiceImpl implements UpdateCommunityService {
 
+
     private final CommunityRepository communityRepository;
     private final CreateCommunityMapper mapper;
 

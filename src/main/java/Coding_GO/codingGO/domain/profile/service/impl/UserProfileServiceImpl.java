@@ -21,6 +21,7 @@ import java.util.Base64;
 @Transactional(readOnly = true)
 public class UserProfileServiceImpl implements UserProfileService {
 
+
     private final UserProfileRepository userProfileRepository;
     private final UserRepository userRepository;
 

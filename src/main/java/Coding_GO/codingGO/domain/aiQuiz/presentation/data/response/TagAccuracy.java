@@ -9,3 +9,4 @@ public record TagAccuracy(
         return totalCount == 0 ? 0 : (double) correctCount / totalCount * 100;
     }
 }
+

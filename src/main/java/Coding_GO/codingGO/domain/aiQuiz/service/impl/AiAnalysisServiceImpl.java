@@ -26,6 +26,7 @@ import java.util.List;
 public class AiAnalysisServiceImpl implements AiAnalysisService {
 
 
+
     private final QuizSolveRecordRepository quizSolveRecordRepository;
     private final UserRepository userRepository;
     private final GeminiService geminiService;

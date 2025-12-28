@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 @Builder
 public class QuizSolveRecordEntity {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "solve_id")

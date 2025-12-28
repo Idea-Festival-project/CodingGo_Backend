@@ -6,4 +6,5 @@ public record ProfileResponse(
         Long point,
         String profileImage
 ) {
+
 }

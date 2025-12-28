@@ -6,3 +6,4 @@ import Coding_GO.codingGO.domain.community.presentation.data.response.community.
 public interface CreateCommunityService {
     CreateCommunityResponse execute(CreateCommunityRequest request, Long userId);
 }
+

@@ -7,3 +7,4 @@ import org.springframework.data.domain.Pageable;
 public interface ProblemService {
     Page<ProblemResponse> getProblemList(Long userId, int start, int end, Pageable pageable);
 }
+

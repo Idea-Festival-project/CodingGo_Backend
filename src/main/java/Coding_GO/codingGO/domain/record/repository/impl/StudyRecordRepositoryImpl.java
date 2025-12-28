@@ -17,6 +17,7 @@ import static Coding_GO.codingGO.domain.problem.entity.QProblemEntity.problemEnt
 @RequiredArgsConstructor
 public class StudyRecordRepositoryImpl implements StudyRecordRepositoryCustom {
 
+
     private final JPAQueryFactory queryFactory;
 
     @Override

@@ -9,3 +9,4 @@ public interface AuthService {
     TokenResponse login(LoginRequest request);
     void logout(String accessToken);
 }
+

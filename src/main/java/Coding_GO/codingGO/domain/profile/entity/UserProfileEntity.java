@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class UserProfileEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long profileId;

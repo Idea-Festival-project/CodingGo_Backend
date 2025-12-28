@@ -17,6 +17,7 @@ public class CommentRepositoryImpl implements GetCommentRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
+
     @Override
     public List<CommentEntity> findCommentsByPostIdWithAuthor(Long postId) {
         return queryFactory

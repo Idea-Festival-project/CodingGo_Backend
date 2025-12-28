@@ -5,3 +5,4 @@ public record GetCommunityListRequest(
         Integer limit
 ) {
 }
+

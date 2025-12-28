@@ -19,6 +19,7 @@ public class GeminiService {
                 "contents", List.of(Map.of("parts", List.of(Map.of("text", prompt))))
         );
 
+
         try {
             Map<String, Object> response = restTemplate.postForObject(url + "?key=" + apiKey, requestBody, Map.class);
             List<Map<String, Object>> candidates = (List<Map<String, Object>>) response.get("candidates");

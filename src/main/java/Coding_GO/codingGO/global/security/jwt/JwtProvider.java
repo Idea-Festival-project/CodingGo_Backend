@@ -28,6 +28,7 @@ public class JwtProvider {
     public String createAccessToken(String email) { return createToken(email, accessTokenValidity); }
     public String createRefreshToken(String email) { return createToken(email, refreshTokenValidity); }
 
+
     private String createToken(String email, long validity) {
         return Jwts.builder()
                 .subject(email)

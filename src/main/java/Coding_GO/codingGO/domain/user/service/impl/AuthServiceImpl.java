@@ -21,6 +21,7 @@ import java.time.Duration;
 @Service
 @RequiredArgsConstructor
 @Transactional
+
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;

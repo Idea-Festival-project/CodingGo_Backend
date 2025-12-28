@@ -22,6 +22,7 @@ import java.util.List;
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class CommunityEntity {
+
     @Id
     @Column(nullable = false, name = "post_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

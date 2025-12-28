@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class DeleteCommunityServiceImpl implements DeleteCommunityService {
+
     private final CommunityRepository communityRepository;
 
     @Override

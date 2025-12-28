@@ -7,3 +7,4 @@ import java.util.List;
 public interface GetCommentService {
     List<GetCommentResponse> execute(Long postId);
 }
+

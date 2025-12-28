@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 public class AiController {
     private final AiAnalysisService aiAnalysisService;
 
+
     @GetMapping("/ai/recommended-quiz")
     @Operation(summary = "AI 추천 퀴즈 조회", description = "사용자의 실력과 선택한 언어를 기반으로 AI가 맞춤형 추천 퀴즈를 가져옵니다.")
     @ApiResponses(value = {

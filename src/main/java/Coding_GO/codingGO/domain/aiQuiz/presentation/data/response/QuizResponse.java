@@ -14,3 +14,4 @@ public record QuizResponse(
         String difficulty
 ) {
 }
+

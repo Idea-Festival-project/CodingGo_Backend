@@ -45,4 +45,5 @@ public class AiQuizRepositoryCustomImpl implements AiQuizRepositoryCustom {
                 .fetchOne();
         return count != null ? count : 0L;
     }
+
 }

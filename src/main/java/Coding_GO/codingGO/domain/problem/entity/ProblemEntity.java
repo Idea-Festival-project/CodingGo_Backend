@@ -15,6 +15,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 public class ProblemEntity {
+
     @Id
     @Column(name = "problem_id")
     private Integer problemId;

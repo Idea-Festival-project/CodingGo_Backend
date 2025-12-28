@@ -9,3 +9,4 @@ public class CommunityNotFoundException extends RuntimeException {
         super("NOT FOUND COMMUNITY");
     }
 }
+

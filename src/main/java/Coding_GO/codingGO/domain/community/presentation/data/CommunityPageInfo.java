@@ -8,3 +8,4 @@ public record CommunityPageInfo(
         boolean hasNext
 ) {
 }
+

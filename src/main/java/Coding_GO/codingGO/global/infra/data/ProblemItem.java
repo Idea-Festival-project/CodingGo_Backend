@@ -12,3 +12,4 @@ public class ProblemItem {
     private int solvedCount;
     private List<TagItem> tags;
 }
+

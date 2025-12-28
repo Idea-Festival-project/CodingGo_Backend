@@ -27,3 +27,4 @@ public class Comment {
     @Builder.Default
     private List<CommentEntity> babyComments = new ArrayList<>();
 }
+

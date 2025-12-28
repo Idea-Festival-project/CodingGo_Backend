@@ -1,5 +1,6 @@
 package Coding_GO.codingGO.domain.friend.presentation.data.request;
 
+
 import jakarta.validation.constraints.NotNull;
 
 public record SendFriendRequest(

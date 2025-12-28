@@ -5,3 +5,4 @@ public enum FriendshipStatus {
     ACCEPTED, // 수락
     REJECTED // 거절
 }
+

@@ -24,4 +24,5 @@ public enum Tier {
         if (level < 0 || level >= values().length) return UNRANKED;
         return values()[level];
     }
+
 }

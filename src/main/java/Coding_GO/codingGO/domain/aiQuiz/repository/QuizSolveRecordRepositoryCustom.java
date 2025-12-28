@@ -8,3 +8,4 @@ public interface QuizSolveRecordRepositoryCustom {
     List<TagAccuracy> findTagAccuracyByUserId(Long userId, String lang);
 
 }
+

@@ -14,3 +14,4 @@ public class SolvedAcResponseDto {
     private int count;
     private List<SolvedAcProblemDto> items;
 }
+

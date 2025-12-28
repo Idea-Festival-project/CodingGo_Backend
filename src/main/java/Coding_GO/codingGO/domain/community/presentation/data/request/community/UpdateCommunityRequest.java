@@ -7,3 +7,4 @@ public record UpdateCommunityRequest(
         CommunityCategory category
 ) {
 }
+

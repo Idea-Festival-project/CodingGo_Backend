@@ -25,6 +25,7 @@ public class QuizSolveRecordRepositoryCustomImpl implements QuizSolveRecordRepos
                 .select(Projections.constructor(TagAccuracy.class,
                         record.tag,
                         record.count(),
+
                         new CaseBuilder().when(record.isCorrect.isTrue()).then(1L).otherwise(0L).sum()
                 ))
                 .from(record)

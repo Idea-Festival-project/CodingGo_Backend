@@ -20,6 +20,7 @@ public class GetCommentMapper {
                 ? Base64.getEncoder().encodeToString(profile.getProfileImage())
                 : null;
 
+
         return GetCommentResponse.builder()
                 .commentId(entity.getCommentId())
                 .userId(author.getUserId())

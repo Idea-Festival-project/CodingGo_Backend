@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProblemRepositoryCustomImpl implements ProblemRepositoryCustom {
 
+
     private final JPAQueryFactory queryFactory;
 
 

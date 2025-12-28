@@ -7,3 +7,4 @@ import org.springframework.data.domain.Pageable;
 public interface GetCommunityRepository {
     Page<Community> findAllCommunityWithCommentCount(Pageable pageable);
 }
+

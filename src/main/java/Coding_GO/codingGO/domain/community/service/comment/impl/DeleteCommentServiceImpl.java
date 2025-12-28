@@ -27,3 +27,4 @@ public class DeleteCommentServiceImpl implements DeleteCommentService {
         comment.setDeleted(true);
     }
 }
+

@@ -7,4 +7,5 @@ public record SignupRequest(
         String bojNickname,
         String code
 ) {
+
 }

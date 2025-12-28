@@ -4,3 +4,4 @@ public record QuizSubmitRequest(
         Long quizId,
         Integer selectedIndex
 ) {}
+

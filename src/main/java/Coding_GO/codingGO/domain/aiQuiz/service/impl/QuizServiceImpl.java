@@ -46,6 +46,7 @@ public class QuizServiceImpl implements QuizService {
         AiQuizEntity quiz = aiQuizRepository.findFirstUnsolved(userId, lang, diff)
                 .orElseThrow(() -> new GlobalException(ErrorCode.QUIZ_ALREADY_COMPLETED));
 
+
         try {
             List<String> choices = objectMapper.readValue(quiz.getChoicesJson(), new TypeReference<>() {});
             return new QuizResponse(quiz.getQuizId(), quiz.getQuestionText(), (int)solvedCount + 1, totalMax, choices, diff);

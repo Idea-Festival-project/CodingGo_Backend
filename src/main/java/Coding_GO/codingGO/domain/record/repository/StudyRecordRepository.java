@@ -11,3 +11,4 @@ public interface StudyRecordRepository extends JpaRepository<StudyRecordEntity, 
     boolean existsByUserAndProblem_ProblemId(UserEntity user, Integer problemId);
     long countByUser_UserId(Long userId);
 }
+

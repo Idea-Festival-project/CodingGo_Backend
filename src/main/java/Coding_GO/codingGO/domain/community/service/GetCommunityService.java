@@ -5,3 +5,4 @@ import Coding_GO.codingGO.domain.community.presentation.data.response.GetCommuni
 public interface GetCommunityService {
     GetCommunityListResponse execute(Integer page, Integer limit);
 }
+

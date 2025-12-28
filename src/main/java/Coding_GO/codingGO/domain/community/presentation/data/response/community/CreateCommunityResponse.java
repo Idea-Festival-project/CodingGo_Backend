@@ -14,6 +14,7 @@ public record CreateCommunityResponse(
         Integer commentCount,
         LocalDateTime createdAt
 ) {
+
     public static CreateCommunityResponse from(Community dto) {
         return new CreateCommunityResponse(
                 dto.getPostId(),

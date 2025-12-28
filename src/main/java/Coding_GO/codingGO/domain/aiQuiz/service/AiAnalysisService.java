@@ -10,3 +10,4 @@ public interface AiAnalysisService {
     void saveAiQuizResult(Long userId, AiResultRequest request);
     CodeReviewResponse getCodeReview(CodeReviewRequest request);
 }
+

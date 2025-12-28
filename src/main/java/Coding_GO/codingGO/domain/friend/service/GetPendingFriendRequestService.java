@@ -7,3 +7,4 @@ public interface GetPendingFriendRequestService {
     GetPendingFriendRequestResponse execute(Long userId, int page,int limit);
 
 }
+

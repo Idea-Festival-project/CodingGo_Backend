@@ -5,3 +5,4 @@ public interface EmailService {
     boolean verifyCode(String email, String code);
     void deleteCode(String email);
 }
+

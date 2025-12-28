@@ -8,3 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface QuizSolveRecordRepository extends JpaRepository<QuizSolveRecordEntity, Integer> , QuizSolveRecordRepositoryCustom {
     boolean existsByUserAndQuiz(UserEntity user, AiQuizEntity quiz);
 }
+

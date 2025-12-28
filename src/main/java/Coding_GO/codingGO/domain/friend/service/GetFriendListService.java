@@ -8,3 +8,4 @@ import java.util.List;
 public interface GetFriendListService {
     GetFriendListResponse execute(Long userId, int page,int limit);
 }
+

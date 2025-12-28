@@ -6,3 +6,4 @@ import Coding_GO.codingGO.domain.friend.presentation.data.response.SendFriendRes
 public interface SendFriendRequestService {
     SendFriendResponse execute(Long userId, SendFriendRequest request);
 }
+

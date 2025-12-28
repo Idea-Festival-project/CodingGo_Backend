@@ -7,3 +7,4 @@ public interface UpdateCommunityService {
     CreateCommunityResponse execute(Long postId, UpdateCommunityRequest request , Long user_id);
 
 }
+

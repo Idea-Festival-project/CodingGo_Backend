@@ -12,3 +12,4 @@ public record CommunityInfo(
         Integer commentCount,
         LocalDateTime createdAt
 ) {}
+

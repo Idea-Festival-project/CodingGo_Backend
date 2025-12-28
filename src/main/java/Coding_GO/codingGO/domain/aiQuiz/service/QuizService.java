@@ -9,3 +9,4 @@ public interface QuizService {
 
     QuizFeedback checkAnswer(Long userId, QuizSubmitRequest request);
 }
+
