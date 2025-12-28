@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/codinggo?useSSL=false&serverTimezone=Asia/Seoul}
+    url: ${MYSQL_URL}
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
+    driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:
       ddl-auto: ${JPA_DDL_AUTO:update}
     show-sql: ${JPA_SHOW_SQL:true}
@@ -35,8 +35,8 @@ spring:
 
 jwt:
   secret: ${JWT_SECRET}
-  access-token-validity: 1800000        # 30분
-  refresh-token-validity: 604800000     # 7일
+  access-token-validity: 1800000
+  refresh-token-validity: 604800000
 
 server:
   port: 8080
