@@ -24,7 +24,6 @@ configurations {
 }
 
 dependencies {
-
     /* ====== Spring Boot Starter ====== */
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -81,3 +80,19 @@ clean {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+//////////////////////////
+// Spring Boot 실행 JAR 설정
+//////////////////////////
+
+// 실행 가능한 JAR 생성
+tasks.named('bootJar') {
+    archiveFileName.set("codingGO-0.0.1-SNAPSHOT.jar") // CloudType start 명령과 맞춤
+}
+
+// Main-Class 설정
+springBoot {
+    mainClass.set('Coding_GO.codingGO.CodingGoApplication')
+}
+
+
